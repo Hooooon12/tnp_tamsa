@@ -239,7 +239,8 @@ queue arguments from (
         for clusterid in condorlogs:
             os.system('condor_wait '+condorlogs[clusterid]+' > /dev/null')
             if not check_condor(clusterid,njob):
-                exit(1)
+                #exit(1) #JH
+                print '[WARNING] Proceed anyways. Please check in detail...' #JH
 
 ####################################################################
 ##### dumping plots

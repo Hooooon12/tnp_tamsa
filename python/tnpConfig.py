@@ -188,9 +188,15 @@ class tnpConfig(object):
     def get_eff(self,ibin):
         f=ROOT.TFile("/".join([self.path,self.fit_file]))
         c=f.Get(self.name+"/"+self.bins[ibin]['name']+"_Canv")
-        c.cd(1)
-        words=c.GetPad(1).GetPrimitive("efficiency").GetLine(0).GetTitle().split()
-        return float(words[2]),float(words[4])
+        try: c.cd(1) #JH
+        except AttributeError:
+          print "[get_eff] WARNING::There is no canvas named",self.name+"/"+self.bins[ibin]['name']+"_Canv"
+          print "[get_eff] WARNING::This can happen in the GAP region. Please take a look."
+          print "[get_eff] WARNING::Will return 1, 1 as eff, err ..."
+          return 1.,1.
+        else:
+          words=c.GetPad(1).GetPrimitive("efficiency").GetLine(0).GetTitle().split()
+          return float(words[2]),float(words[4])
 
     def make_eff_hist(self):
         ndim=min(len(self.vars),3)
