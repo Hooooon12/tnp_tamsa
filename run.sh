@@ -43,14 +43,13 @@
 #python tnp_tamsa.py config/HNL_Config_El_RebinPtEta.py TightID_2017  &
 #python tnp_tamsa.py config/HNL_Config_El_RebinPtEta.py TightID_2018  &
 
-#python tnp_tamsa.py config/HNL_Config_El_MedCh.py TightID_LowPt_2017 &
-#python tnp_tamsa.py config/HNL_Config_El_MedCh.py TightID_2017 &
-
-#python tnp_tamsa.py config/HNL_Config_El_MedCh.py TightID_LowPt_2016a &
+python tnp_tamsa.py config/HNL_Config_El_MedCh.py TightID_LowPt_2016a &
 #python tnp_tamsa.py config/HNL_Config_El_MedCh.py TightID_2016a &
-#python tnp_tamsa.py config/HNL_Config_El_MedCh.py TightID_LowPt_2016b &
+python tnp_tamsa.py config/HNL_Config_El_MedCh.py TightID_LowPt_2016b &
 #python tnp_tamsa.py config/HNL_Config_El_MedCh.py TightID_2016b &
-#python tnp_tamsa.py config/HNL_Config_El_MedCh.py TightID_LowPt_2018 &
+python tnp_tamsa.py config/HNL_Config_El_MedCh.py TightID_LowPt_2017 &
+#python tnp_tamsa.py config/HNL_Config_El_MedCh.py TightID_2017 &
+python tnp_tamsa.py config/HNL_Config_El_MedCh.py TightID_LowPt_2018 &
 #python tnp_tamsa.py config/HNL_Config_El_MedCh.py TightID_2018 &
 #
 #python tnp_tamsa.py config/HNL_Config_El_MedCh.py HNL_2016a &
@@ -58,11 +57,11 @@
 #python tnp_tamsa.py config/HNL_Config_El_MedCh.py HNL_2017 &
 #python tnp_tamsa.py config/HNL_Config_El_MedCh.py HNL_2018 &
 #
-python tnp_tamsa.py config/HNL_Config_El_MedCh.py Ele23Leg1_HNL_ULID_2016a &
-python tnp_tamsa.py config/HNL_Config_El_MedCh.py Ele12Leg2_HNL_ULID_2016a &
-python tnp_tamsa.py config/HNL_Config_El_MedCh.py Ele23Leg1_HNL_ULID_2016b &
-python tnp_tamsa.py config/HNL_Config_El_MedCh.py Ele12Leg2_HNL_ULID_2016b &
-python tnp_tamsa.py config/HNL_Config_El_MedCh.py Ele23Leg1_HNL_ULID_2017 &
-python tnp_tamsa.py config/HNL_Config_El_MedCh.py Ele12Leg2_HNL_ULID_2017 &
-python tnp_tamsa.py config/HNL_Config_El_MedCh.py Ele23Leg1_HNL_ULID_2018 &
-python tnp_tamsa.py config/HNL_Config_El_MedCh.py Ele12Leg2_HNL_ULID_2018 &
+#python tnp_tamsa.py config/HNL_Config_El_MedCh.py Ele23Leg1_HNL_ULID_2016a &
+#python tnp_tamsa.py config/HNL_Config_El_MedCh.py Ele12Leg2_HNL_ULID_2016a &
+#python tnp_tamsa.py config/HNL_Config_El_MedCh.py Ele23Leg1_HNL_ULID_2016b &
+#python tnp_tamsa.py config/HNL_Config_El_MedCh.py Ele12Leg2_HNL_ULID_2016b &
+#python tnp_tamsa.py config/HNL_Config_El_MedCh.py Ele23Leg1_HNL_ULID_2017 &
+#python tnp_tamsa.py config/HNL_Config_El_MedCh.py Ele12Leg2_HNL_ULID_2017 &
+#python tnp_tamsa.py config/HNL_Config_El_MedCh.py Ele23Leg1_HNL_ULID_2018 &
+#python tnp_tamsa.py config/HNL_Config_El_MedCh.py Ele12Leg2_HNL_ULID_2018 &

@@ -14,6 +14,9 @@ samples={
     'data2017':'/gv0/DATA/SKFlat/Run2UltraLegacy_v3/2017/DATA_SkimTree_EGammaTnP/SingleElectron',
     'amc2017':'/gv0/DATA/SKFlat/Run2UltraLegacy_v3/2017/MC_SkimTree_EGammaTnP/DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8',
     'mg2017':'/gv0/DATA/SKFlat/Run2UltraLegacy_v3/2017/MC_SkimTree_EGammaTnP/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8',
+    'dataPOG2017':'/data6/Users/jihkim/tnp_tamsa/POG_tree/2017/SingleEle_RunBCDEF', # /eos/cms/store/group/phys_egamma/asroy/Tag-and-Probe_Tree/UL2017_MINIAOD_Nm1/
+    'amcPOG2017':'/data6/Users/jihkim/tnp_tamsa/POG_tree/2017/DYJetsToLL_amcatnloFXFX',
+    'mgPOG2017':'/data6/Users/jihkim/tnp_tamsa/POG_tree/2017/DYJetsToLL_madgraphMLM',
 
     'data2018':'/gv0/DATA/SKFlat/Run2UltraLegacy_v3/2018/DATA_SkimTree_EGammaTnP/EGamma',
     'amc2018':'/gv0/DATA/SKFlat/Run2UltraLegacy_v3/2018/MC_SkimTree_EGammaTnP/DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8',
@@ -26,6 +29,14 @@ bin_POGID = [
     { 'var' : 'el_pt_cor' , 'type': 'float', 'bins': [20, 35, 50, 100, 200, 500], 'title':'p_{T} [GeV]' },
 ]
 bin_POGID_LowPt = [
+    { 'var' : 'el_sc_eta' , 'type': 'float', 'bins': [-2.5, -2.,-1.566, -1.479, -0.8, 0., 0.8, 1.479,1.566, 2., 2.5], 'title':'#eta_{SC}' },
+    { 'var' : 'el_pt_cor' , 'type': 'float', 'bins': [10, 20], 'title':'p_{T} [GeV]' },
+]
+bin_POGID_2016 = [
+    { 'var' : 'el_sc_eta' , 'type': 'float', 'bins': [-2.5, -2.,-1.566, -1.479, -0.8, 0., 0.8, 1.479,1.566, 2., 2.5], 'title':'#eta_{SC}' },
+    { 'var' : 'el_pt_cor' , 'type': 'float', 'bins': [20, 35, 50, 100, 500], 'title':'p_{T} [GeV]' },
+]
+bin_POGID_LowPt_2016 = [
     { 'var' : 'el_sc_eta' , 'type': 'float', 'bins': [-2.5, -2.,-1.566, -1.479, -0.8, 0., 0.8, 1.479,1.566, 2., 2.5], 'title':'#eta_{SC}' },
     { 'var' : 'el_pt_cor' , 'type': 'float', 'bins': [10, 20], 'title':'p_{T} [GeV]' },
 ]
@@ -168,8 +179,10 @@ Configs['HNL_CF_2016a']=config.clone(test=HNL_ULID_CF,  bins=bin_ID)
 Configs['HNL_Conv_2016a']=config.clone(test=HNL_ULID_CONV, bins=bin_ID)
 Configs['HNL_Fake_2016a']=config.clone(test=HNL_ULID_FAKE, bins=bin_ID)
 Configs['MediumID_2016a']=config.clone(test=MediumID,      bins=bin_ID)
-Configs['TightID_2016a']=config.clone(test=TightID,      bins=bin_POGID)
-Configs['TightID_LowPt_2016a']=config.clone(test=TightID,      bins=bin_POGID_LowPt)
+Configs['TightID_2016a']=config.clone(test=TightID,      bins=bin_POGID_2016)
+Configs['TightID_LowPt_2016a']=config.clone(test=TightID,      bins=bin_POGID_LowPt_2016)
+Configs['TightID_POGsample_2016a']=config.clone(test=TightID,      bins=bin_POGID_2016)
+Configs['TightID_POGsample_LowPt_2016a']=config.clone(test=TightID,      bins=bin_POGID_LowPt_2016)
 
 ### trigger ###
 config_trig=config.clone( tree='tnpEleTrig/fitter_tree' )
@@ -204,6 +217,28 @@ for key in Configs:
        sim=samples["mg2018"],
        expr='( '+POGTagCutBase32+TagHLTEle18+' && '+globals()[key.replace('_2016a','').replace('Ele23Leg1_','').replace('Ele12Leg2_','')]+')',
     )
+  elif 'TightID' in key: # POG reproduction
+    if 'POGsample' in key: # only 2017 for now
+      if 'LowPt' in key:
+        Configs_2017[key.replace("_2016a","_2017" )]=Configs[key].clone(
+								data=samples["dataPOG2017"],
+								sim=samples["mgPOG2017"],
+								bins=bin_POGID_LowPt,
+								expr='('+POGTagCutBase32MVA+TagHLTEle17+')',
+				)
+      else:
+        Configs_2017[key.replace("_2016a","_2017" )]=Configs[key].clone(
+								data=samples["dataPOG2017"],
+								sim=samples["mgPOG2017"],
+								bins=bin_POGID,
+								expr='('+POGTagCutBase32+TagHLTEle17+')')
+    else:
+      if 'LowPt' in key:
+        Configs_2017[key.replace("_2016a","_2017" )]=Configs[key].clone(data=samples["data2017"], sim=samples["mg2017"], bins=bin_POGID_LowPt, expr='('+POGTagCutBase32MVA+TagHLTEle17+')')
+        Configs_2018[key.replace("_2016a","_2018" )]=Configs[key].clone(data=samples["data2018"], sim=samples["mg2018"], bins=bin_POGID_LowPt, expr='('+POGTagCutBase32MVA+TagHLTEle18+')')
+      else:
+        Configs_2017[key.replace("_2016a","_2017" )]=Configs[key].clone(data=samples["data2017"], sim=samples["mg2017"], bins=bin_POGID, expr='('+POGTagCutBase32+TagHLTEle17+')')
+        Configs_2018[key.replace("_2016a","_2018" )]=Configs[key].clone(data=samples["data2018"], sim=samples["mg2018"], bins=bin_POGID, expr='('+POGTagCutBase32+TagHLTEle18+')')
   else:
     Configs_2017[key.replace("_2016a","_2017" )]=Configs[key].clone(data=samples["data2017"], sim=samples["mg2017"], expr='('+POGTagCutBase32+TagHLTEle17+')')
     Configs_2018[key.replace("_2016a","_2018" )]=Configs[key].clone(data=samples["data2018"], sim=samples["mg2018"], expr='('+POGTagCutBase32+TagHLTEle18+')')
