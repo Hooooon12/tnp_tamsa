@@ -108,7 +108,7 @@ def makePassFailHistograms( configs, njob, ijob, reduction=1 ):
     ###############################
     tree = ROOT.TChain(configs[0].tree)
     if os.path.isdir(configs[0].sample):
-        rootfiles=os.popen('find '+configs[0].sample+' -type f -name \'*.root\' | sort -V').read().split()
+        rootfiles=os.popen('find '+configs[0].sample+' -type f -name \'*.root\' -not -name \'*2025_01_03_050234.root\' -path *2025_01_03_050234* | sort -V').read().split() # NOTE This is a hotfix to pick up latest skim results
     elif os.path.isfile(configs[0].sample):
         rootfiles=[configs[0].sample]
     else:
