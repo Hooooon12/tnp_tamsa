@@ -83,7 +83,8 @@ POGTagCutBase32MVA = 'tag_Ele_pt_cor>35 && el_q*tag_Ele_q<0  '+EtaTag + MVATag #
 
 #ID to test
 
-HNL_ULID   = 'passingHNLMVA ' +VetoGap
+#HNL_ULID   = 'passingHNLMVA ' +VetoGap
+HNL_ULID   = 'passingHNLMVA_HighPt ' +VetoGap
 HNTightV2  = 'passingHNTightV2 ' +VetoGap
 MediumID   = 'passingCutBasedMedium94XV2 '+VetoGap
 TightID   = 'passingCutBasedTight94XV2 '+VetoGap
@@ -141,7 +142,148 @@ fit_altbkg = [
     "Exponential::bkgFail(x, alphaF[0.,-5.,5.])",
 ]
 
+#fit_altbkg = [
+#    "HistPdf::sigPhysPass(x,histPass_genmatching,2)",
+#    "HistPdf::sigPhysFail(x,histFail_genmatching,2)",
+#    "Gaussian::sigResPass(x,meanGaussP[0.0,-5.0,5.0],sigmaP[0.02,0.02,4.0])",
+#    "Gaussian::sigResFail(x,meanGaussF[0.0,-5.0,5.0],sigmaF[3.,0.,10.0])",
+#    "FCONV::sigPass(x, sigPhysPass , sigResPass)",
+#    "FCONV::sigFail(x, sigPhysFail , sigResFail)",
+#    "Exponential::bkgPass(x, alphaP[0.,-5.,5.])",
+#    "Exponential::bkgFail(x, alphaF[-1.,-2.,2])",
+#] # trial 1
 
+#fit_altbkg = [
+#    "HistPdf::sigPhysPass(x,histPass_genmatching,2)",
+#    "HistPdf::sigPhysFail(x,histFail_genmatching,2)",
+#    "Gaussian::sigResPass(x,meanGaussP[0.0,-5.0,5.0],sigmaP[0.02,0.02,4.0])",
+#    "Gaussian::sigResFail(x,meanGaussF[0.0,-5.0,5.0],sigmaF[0.02,0.02,4.0])",
+#    "FCONV::sigPass(x, sigPhysPass , sigResPass)",
+#    "FCONV::sigFail(x, sigPhysFail , sigResFail)",
+#    "Exponential::bkgPass(x, alphaP[0.,-5.,5.])",
+#    "Exponential::bkgFail(x, alphaF[-1.,-2.,-0.04])",
+#] # trial 2
+
+#fit_altbkg = [
+#    "HistPdf::sigPhysPass(x,histPass_genmatching,2)",
+#    "HistPdf::sigPhysFail(x,histFail_genmatching,2)",
+#    "Gaussian::sigResPass(x,meanGaussP[0.0,-5.0,5.0],sigmaP[0.02,0.02,4.0])",
+#    "Gaussian::sigResFail(x,meanGaussF[0.0,-5.0,5.0],sigmaF[0.02,0.02,4.0])",
+#    "FCONV::sigPass(x, sigPhysPass , sigResPass)",
+#    "FCONV::sigFail(x, sigPhysFail , sigResFail)",
+#    "Exponential::bkgPass(x, alphaP[0.,-5.,5.])",
+#    "Exponential::bkgFail(x, alphaF[-1.,-5.,-0.05])",
+#] # trial 3
+
+#fit_altbkg = [
+#    "HistPdf::sigPhysPass(x,histPass_genmatching,2)",
+#    "HistPdf::sigPhysFail(x,histFail_genmatching,2)",
+#    "Gaussian::sigResPass(x,meanGaussP[0.0,-5.0,5.0],sigmaP[0.02,0.02,4.0])",
+#    "Gaussian::sigResFail(x,meanGaussF[0.0,-5.0,5.0],sigmaF[0.02,0.02,4.0])",
+#    "FCONV::sigPass(x, sigPhysPass , sigResPass)",
+#    "FCONV::sigFail(x, sigPhysFail , sigResFail)",
+#    "Exponential::bkgPass(x, alphaP[0.,-5.,5.])",
+#    "Exponential::bkgFail(x, alphaF[-1.,-5.,-0.06])",
+#] # trial 4
+
+#fit_altbkg = [
+#    "HistPdf::sigPhysPass(x,histPass_genmatching,2)",
+#    "HistPdf::sigPhysFail(x,histFail_genmatching,2)",
+#    "Gaussian::sigResPass(x,meanGaussP[0.0,-5.0,5.0],sigmaP[0.02,0.02,4.0])",
+#    "Gaussian::sigResFail(x,meanGaussF[0.0,-5.0,5.0],sigmaF[0.02,0.02,4.0])",
+#    "FCONV::sigPass(x, sigPhysPass , sigResPass)",
+#    "FCONV::sigFail(x, sigPhysFail , sigResFail)",
+#    "Exponential::bkgPass(x, alphaP[0.,-5.,5.])",
+#    "Exponential::bkgFail(x, alphaF[-1.,-5.,-0.042])",
+#] # trial 5
+
+#fit_altbkg = [
+#    "HistPdf::sigPhysPass(x,histPass_genmatching,2)",
+#    "HistPdf::sigPhysFail(x,histFail_genmatching,2)",
+#    "Gaussian::sigResPass(x,meanGaussP[0.0,-5.0,5.0],sigmaP[0.02,0.02,4.0])",
+#    "Gaussian::sigResFail(x,meanGaussF[0.0,-5.0,5.0],sigmaF[0.02,0.02,0.5])",
+#    "FCONV::sigPass(x, sigPhysPass , sigResPass)",
+#    "FCONV::sigFail(x, sigPhysFail , sigResFail)",
+#    "Exponential::bkgPass(x, alphaP[0.,-5.,5.])",
+#    "Exponential::bkgFail(x, alphaF[-1.,-5.,-0.042])",
+#] # trial 6
+
+#fit_altbkg = [
+#    "HistPdf::sigPhysPass(x,histPass_genmatching,2)",
+#    "HistPdf::sigPhysFail(x,histFail_genmatching,2)",
+#    "Gaussian::sigResPass(x,meanGaussP[0.0,-5.0,5.0],sigmaP[0.02,0.02,4.0])",
+#    "Gaussian::sigResFail(x,meanGaussF[0.0,-5.0,5.0],sigmaF[0.015,0.01,0.2])",
+#    "FCONV::sigPass(x, sigPhysPass , sigResPass)",
+#    "FCONV::sigFail(x, sigPhysFail , sigResFail)",
+#    "Exponential::bkgPass(x, alphaP[0.,-5.,5.])",
+#    "Exponential::bkgFail(x, alphaF[-1.,-5.,-0.042])",
+#] # trial 7
+
+#fit_altbkg = [
+#    "HistPdf::sigPhysPass(x,histPass_genmatching,2)",
+#    "HistPdf::sigPhysFail(x,histFail_genmatching,2)",
+#    "Gaussian::sigResPass(x,meanGaussP[0.0,-5.0,5.0],sigmaP[0.02,0.02,4.0])",
+#    "Gaussian::sigResFail(x,meanGaussF[0.0,-5.0,5.0],sigmaF[0.02,0.01,1.5])",
+#    "FCONV::sigPass(x, sigPhysPass , sigResPass)",
+#    "FCONV::sigFail(x, sigPhysFail , sigResFail)",
+#    "Exponential::bkgPass(x, alphaP[0.,-5.,5.])",
+#    "Exponential::bkgFail(x, alphaF[-1.,-5.,-0.042])",
+#] # trial 8
+
+#fit_altbkg = [
+#    "HistPdf::sigPhysPass(x,histPass_genmatching,2)",
+#    "HistPdf::sigPhysFail(x,histFail_genmatching,2)",
+#    "Gaussian::sigResPass(x,meanGaussP[0.0,-5.0,5.0],sigmaP[0.02,0.02,4.0])",
+#    "Gaussian::sigResFail(x,meanGaussF[0.0,-5.0,5.0],sigmaF[2,1.5,2.5])",
+#    "FCONV::sigPass(x, sigPhysPass , sigResPass)",
+#    "FCONV::sigFail(x, sigPhysFail , sigResFail)",
+#    "Exponential::bkgPass(x, alphaP[0.,-5.,5.])",
+#    "Exponential::bkgFail(x, alphaF[-1.,-5.,-0.042])",
+#] # trial 9
+
+#fit_altbkg = [
+#    "HistPdf::sigPhysPass(x,histPass_genmatching,2)",
+#    "HistPdf::sigPhysFail(x,histFail_genmatching,2)",
+#    "Gaussian::sigResPass(x,meanGaussP[0.0,-5.0,5.0],sigmaP[0.02,0.02,4.0])",
+#    "Gaussian::sigResFail(x,meanGaussF[0.0,-5.0,5.0],sigmaF[3,2.5,3.5])",
+#    "FCONV::sigPass(x, sigPhysPass , sigResPass)",
+#    "FCONV::sigFail(x, sigPhysFail , sigResFail)",
+#    "Exponential::bkgPass(x, alphaP[0.,-5.,5.])",
+#    "Exponential::bkgFail(x, alphaF[-1.,-5.,-0.042])",
+#] # trial 10
+
+#fit_altbkg = [
+#    "HistPdf::sigPhysPass(x,histPass_genmatching,2)",
+#    "HistPdf::sigPhysFail(x,histFail_genmatching,2)",
+#    "Gaussian::sigResPass(x,meanGaussP[0.0,-5.0,5.0],sigmaP[0.02,0.02,4.0])",
+#    "Gaussian::sigResFail(x,meanGaussF[0.0,-5.0,5.0],sigmaF[4,3.5,4.5])",
+#    "FCONV::sigPass(x, sigPhysPass , sigResPass)",
+#    "FCONV::sigFail(x, sigPhysFail , sigResFail)",
+#    "Exponential::bkgPass(x, alphaP[0.,-5.,5.])",
+#    "Exponential::bkgFail(x, alphaF[-1.,-5.,-0.042])",
+#] # trial 11
+
+#fit_altbkg = [
+#    "HistPdf::sigPhysPass(x,histPass_genmatching,2)",
+#    "HistPdf::sigPhysFail(x,histFail_genmatching,2)",
+#    "Gaussian::sigResPass(x,meanGaussP[0.0,-5.0,5.0],sigmaP[0.02,0.02,4.0])",
+#    "RooCBShape::sigResFail(x,meanF[-0.0,-5.0,5.0],sigmaF[1,0.3,10.0],alpha_CB_F[2.0,1.2,3.5],nF[3,-5,5])",
+#    "FCONV::sigPass(x, sigPhysPass , sigResPass)",
+#    "FCONV::sigFail(x, sigPhysFail , sigResFail)",
+#    "Exponential::bkgPass(x, alphaP[0.,-5.,5.])",
+#    "Exponential::bkgFail(x, alphaF[0.,-5.,5.])",
+#] # CB
+
+#fit_altbkg = [
+#    "HistPdf::sigPhysPass(x,histPass_genmatching,2)",
+#    "HistPdf::sigPhysFail(x,histFail_genmatching,2)",
+#    "Gaussian::sigResPass(x,meanGaussP[0.0,-5.0,5.0],sigmaP[0.02,0.02,4.0])",
+#    "RooCBShape::sigResFail(x,meanF[-0.0,-5.0,5.0],sigmaF[1,0.3,10.0],alpha_CB_F[2.0,1.2,3.5],nF[3,-5,5])",
+#    "FCONV::sigPass(x, sigPhysPass , sigResPass)",
+#    "FCONV::sigFail(x, sigPhysFail , sigResFail)",
+#    "Exponential::bkgPass(x, alphaP[0.,-5.,5.])",
+#    "RooCMSShape::bkgFail(x, aCMSF[50.,40.,80.],bCMSF[0.1, 0.01,0.25],cCMSF[0.05, 0.0001,0.2],peakCMSF[90.0])",
+#] # Superior RooCMS
 
 ########### Configs ##############
 Configs={}
